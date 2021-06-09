@@ -1,0 +1,13 @@
+<h4><b>Список обучающихся</b></h4>
+
+{% if students_list %}
+<ul>
+      {% for student in students_list %}
+      <li>
+            <i><a href=" {{ student.get_absolute_url }}">{{ student.last_name }} {{ student.first_name }} {{ student.second_name }} <font color='red'> [{{ student.get_status_display }}] </font> </a></i>
+      </li>
+      {% endfor %}
+</ul>
+{% else %}
+      <p>Записи об обучающихся отсутствуют.</p>
+{% endif %}

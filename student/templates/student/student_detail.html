@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <font face='Open Sans'>
+    <h3><b>ФИО:</b> <i>{{ student.last_name }} {{ student.first_name }} {{ student.second_name }} </i></h3>
+
+    <p><strong>Зачетная книжка :</strong> <i> <font color='blue'> {{ student.student_id }} </font> </i> </p>
+    <p><strong>Гражданство:</strong> <i> <font color='blue'> {{ student.get_citizenship_display }} </font> </i> </p>
+    <p><strong>Основа обучения:</strong> <i> <font color='blue'> {{ student.get_basis_display }} </font> </i> </p>
+    <p><strong>Уровень обучения:</strong> <i> <font color='blue'> {{ student.get_level_display }} </font> </i> </p>
+    <p><strong>Группа:</strong> <i> <font color='blue'> {{ student.group }} </font> </i></p>
+    <p><strong>Дата зачисления:</strong> <i> <font color='blue'> {{ student.start_date }} </font> </i> </p>
+    <p><strong>Текущий статус:</strong> <i> <font color='blue'> {{ student.get_status_display }} </font> </i> </p>
+    </font>
+{% endblock %}

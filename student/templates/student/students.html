@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Сведения об обучающихся</title>{% endblock %}
+
+{% block content %}
+<font face='Open Sans'> <h3><b>Сводная информация по обучающимся</b></h3>
+      <p>Всего на факультете: <strong> {{ num_students }} </strong> </p>
+      <p>в том числе:</p>
+      <ul>
+            <p><li><strong>На бюджете:</strong> {{ num_basis_b }}</li>
+            <li><strong>На контракте:</strong> {{ num_basis_k }}</li>
+            <li><strong>По гослинии (иностранный):</strong> {{ num_basis_i }}</li>
+            </p>
+            <p>
+            <li><strong>На бакалавриате:</strong> {{ num_level_bak }}</li>
+            <li><strong>На магистратуре:</strong> {{ num_level_mag }}</li>
+            </p>
+            <p>
+            <li><strong>Граждение РФ:</strong> {{ citizenship_ru }}</li>
+            <li><strong>Иностранцы:</strong> {{ citizenship_i }}</li>
+            </p>
+            <p>
+            <li><strong>Являются студентами:</strong> {{ status_s }}</li>
+            <li><strong>В академическом отпуске:</strong> {{ status_ao }}</li>
+            <li><strong>Отчислены:</strong> {{ status_ot }}</li>
+            </p>
+      </ul>
+</font>
+<font face='Open Sans'> {% include 'student/student_list.html' %} </font>
+
+{% endblock %}
+
