@@ -25,19 +25,10 @@ urlpatterns = [
 urlpatterns += [
     path('', include('main.urls')),
     path('students/', include('student.urls')),
+    path('subjects/', include('subject.urls')),
 # TODO:     path('statistics/', include('statistics.urls')),
 # TODO:     path('money/', include('money.urls')),
 # TODO:     path('arrear/', include('arrear.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-
-
-
-
-
-
-
-from django.conf.urls.static import static
-
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

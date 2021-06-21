@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Student
 from django.http import Http404
 from django.utils.translation import gettext as _
+from .forms import StudentForm
+from django.views import generic
+
+
 
 def students(request):
     """
@@ -45,7 +49,7 @@ def students(request):
             },
     )
 
-from django.views import generic
+
 
 class StudentDetailView(generic.DetailView):
     model = Student
@@ -76,3 +80,25 @@ class StudentDetailView(generic.DetailView):
             raise Http404(_("No %(verbose_name)s found matching the query") %
                           {'verbose_name': queryset.model._meta.verbose_name})
         return obj
+
+
+
+def add_student(request):
+    bound_form = StudentForm(request.POST)
+    if request.method == 'POST':
+        if bound_form.is_valid():
+            new_student = bound_form.save()
+            return redirect('students')
+        else:
+            'Error'
+    
+    new_student = StudentForm()
+    
+    data = {
+        'form':bound_form,
+    }
+    return render(request, 'student/add_student.html', data)
+
+
+
+

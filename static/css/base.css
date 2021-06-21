@@ -1,0 +1,271 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: rgb(109, 109, 109);
+}
+
+/* Главная страница */
+.feature_main {
+  text-align: center;
+  float: top;
+  margin-left: 200px;
+  padding-top: 20px;
+}
+/* ----------------------------------------------------------- */
+/* Обучающиеся */
+.student_title {
+  text-align: center;
+  float: top;
+  margin-left: 200px;
+  padding-top: 20px;
+}
+
+.student_result {
+  text-align: left;
+  float: top;
+  margin-left: 200px;
+  font-family: Open Sans;
+  padding-top: 30px;
+}
+
+.student_list_title {
+  text-align: center;
+  float: top;
+  margin-left: 200px;
+  font-family: Open Sans;
+}
+
+.student_list ul li a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.student_list {
+  text-align: left;
+  float: top;
+  margin-top: 15px;
+  margin-left: 200px;
+  font-family: Open Sans;
+  text-decoration: none;
+  color: rgb(109, 109, 109);
+}
+
+.student_detail_title {
+  text-align: left;
+  float: top;
+  padding-top: 20px;
+  margin-left: 200px;
+  font-family: Open Sans;
+}
+
+.student_detail_list {
+  text-align: left;
+  float: top;
+  margin-left: 200px;
+  font-family: Open Sans;
+  font-size: large;
+  width: 500px;
+}
+
+/* ----------------------------------------------------------- */
+/* Дисциплины */
+.subject_title {
+  text-align: center;
+  float: top;
+  margin-left: 200px;
+  padding-top: 20px;
+}
+
+.subject_result {
+  text-align: left;
+  float: top;
+  margin-left: 200px;
+  font-family: Open Sans;
+  padding-top: 30px;
+}
+
+.subject_list_title {
+  text-align: center;
+  float: top;
+  margin-left: 200px;
+  font-family: Open Sans;
+}
+
+.subject_list {
+  text-align: left;
+  float: top;
+  margin-left: 200px;
+  font-family: Open Sans;
+}
+
+.subject_list ul li a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.subject_detail_title {
+  text-align: left;
+  float: top;
+  padding-top: 20px;
+  margin-left: 200px;
+  font-family: Open Sans;
+}
+
+.subject_detail_list {
+  text-align: left;
+  float: top;
+  margin-left: 200px;
+  margin-top: 20px;
+  font-family: Open Sans;
+  font-size: large;
+}
+
+/* ----------------------------------------------------------- */
+/* Форма добавления дисциплины/обучающегося */
+form {
+  display: inline-block;
+  width: 500px;
+  margin-top: 5px;
+  text-align: center;
+  font-family: Open Sans;
+}
+
+label {
+  display: block;
+  text-align: left;
+  font-family: Open Sans;
+  padding: 10px;
+}
+
+input[type=text] {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border: 2px solid #dfdfdf;
+  font-family: Open Sans;
+  height: 45px;
+}
+
+select {
+  height: 45px;
+  padding: 1px;
+  font-family: Open Sans;
+}
+
+.alert-danger {
+  margin-left: 200px;
+}
+
+/* ----------------------------------------------------------- */
+/* Кнопка Добавить обучающегося */
+.addsubject_button {
+  /* text-align: left;
+  float: top; */
+  margin-top: 15px;
+  padding: 10px;
+  margin-left: 190px;
+  font-family: Open Sans;
+}
+
+/* ----------------------------------------------------------- */
+/* Добавление дисциплины */
+.addsubject_title {
+  text-align: center;
+  float: top;
+  margin-left: 200px;
+  font-family: Open Sans;
+  padding-top: 20px;
+}
+
+/* ----------------------------------------------------------- */
+/* Кнопка Добавить студента */
+.addstudent_button {
+  /* text-align: left;
+  float: top; */
+  margin-top: 15px;
+  padding: 10px;
+  margin-left: 190px;
+  font-family: Open Sans;
+}
+
+/* ----------------------------------------------------------- */
+/* Добавление студента */
+.addstudent_title {
+  text-align: center;
+  float: top;
+  margin-left: 200px;
+  font-family: Open Sans;
+  padding-top: 20px;
+}
+
+.addstudent_body {
+  text-align: center;
+  float: top;
+  margin-left: 200px;
+  font-family: Open Sans;
+  padding-top: 10px;
+  /* line-height: 10px; */
+}
+
+
+/* ----------------------------------------------------------- */
+
+/* ----------------------------------------------------------- */
+/* Боковое навигационное меню */
+.sidebar {
+  height: 100%;
+  width: 170px;
+  position: fixed;
+  background-color: #f1f1f1;
+  overflow: auto;
+  float: left;
+  box-shadow: 5px 5px 55px rgb(189, 189, 189);
+}
+
+/* Сайдбар ссылки */
+.sidebar a {
+  display: block;
+  color: #000000;
+  padding: 16px;
+  font-family: Open Sans;
+  text-decoration: none;
+}
+
+/* Активная/текущая ссылка */
+.sidebar a.active {
+  background-color: #000000;
+  color: white;
+}
+
+/* Ссылки при наведении мыши */
+.sidebar a:hover:not(.active) {
+  background-color: rgb(189, 189, 189);
+  color: white;
+}
+
+/* Содержание страницы. Значение свойства margin-left должно соответствовать значению свойства width боковой панели */
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+/* На экранах шириной менее 700 пикселей превратить боковую панель в верхнюю панель */
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+/* На экранах размером менее 400 пикселей панель отображать вертикально, а не горизонтально */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+ 

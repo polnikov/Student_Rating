@@ -1,23 +1,32 @@
+<!DOCTYPE html>
+
 {% extends "base.html" %}
-{% load static %}
-      <link rel="stylesheet" href="{% static 'main/css/student.css' %}">
+
+{% block title %} Рейтинг ФИЭиГХ {% endblock %}
 
 {% block content %}
-<main>
-<div class='main'>
-      <h1>Рейтинг успеваемости обучающихся</h1>
-      <button class='btn btn-warning'> ТТ-1 </button>
-      <button class='btn btn-warning'> ТТ-2 </button>
-      <button class='btn btn-warning'> ТТ-3 </button>
-      <button class='btn btn-warning'> ТТ-4 </button>
+<div class="feature_main">
+      <h1> Рейтинг успеваемости обучающихся ФИЭиГХ</h1>
+</div>
 
+<div class="student_result">
 
-
+      <table id="grid-data-api" class="table table-condensed table-hover table-striped" data-toggle="bootgrid" data-ajax="true" data-url="/api/data/basic">      <thead>
+            <tr>
+                  <th data-column-id="id" data-type="numeric">ID</th>
+                  <th data-column-id="sender">Sender</th>
+                  <th data-column-id="received" data-order="desc">Received</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                  <td>10238</td>
+                  <td>eduardo@pingpong.com</td>
+                  <td>14.10.2013</td>
+            </tr>
+            ...
+            </tbody>
+      </table>
 
 </div>
-</main>
-
-
-
-
 {% endblock %}

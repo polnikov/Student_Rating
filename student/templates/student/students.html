@@ -1,32 +1,85 @@
+<!DOCTYPE html>
+
 {% extends "base.html" %}
 
-{% block title %}<title>Сведения об обучающихся</title>{% endblock %}
+{% block title %}Сведения об обучающихся{% endblock %}
 
 {% block content %}
-<font face='Open Sans'> <h3><b>Сводная информация по обучающимся</b></h3>
-      <p>Всего на факультете: <strong> {{ num_students }} </strong> </p>
-      <p>в том числе:</p>
-      <ul>
-            <p><li><strong>На бюджете:</strong> {{ num_basis_b }}</li>
-            <li><strong>На контракте:</strong> {{ num_basis_k }}</li>
-            <li><strong>По гослинии (иностранный):</strong> {{ num_basis_i }}</li>
-            </p>
-            <p>
-            <li><strong>На бакалавриате:</strong> {{ num_level_bak }}</li>
-            <li><strong>На магистратуре:</strong> {{ num_level_mag }}</li>
-            </p>
-            <p>
-            <li><strong>Граждение РФ:</strong> {{ citizenship_ru }}</li>
-            <li><strong>Иностранцы:</strong> {{ citizenship_i }}</li>
-            </p>
-            <p>
-            <li><strong>Являются студентами:</strong> {{ status_s }}</li>
-            <li><strong>В академическом отпуске:</strong> {{ status_ao }}</li>
-            <li><strong>Отчислены:</strong> {{ status_ot }}</li>
-            </p>
-      </ul>
-</font>
-<font face='Open Sans'> {% include 'student/student_list.html' %} </font>
 
+<div class="student_title">
+      <h1><span class="badge bg-secondary">Сведения об обучающихся</span></h1>
+</div>
+
+<div class="student_result">
+      <div class="row col-md-4">
+      <table class="table">
+            <tbody class="align-middle">
+                  <tr>
+                        <td><strong>Всего на факультете</strong></td>
+                        <td><h6><span class="badge bg-secondary">{{ num_students }}</span></h6></td>
+                  </tr>
+                  <tr class="table-active">
+                        <td><strong>Основа обучения</strong></td>
+                        <td></td>
+                  </tr>
+                  <tr>
+                        <td>На бюджете</td>
+                        <td><h6><span class="badge bg-secondary">{{ num_basis_b }}</span></h6></td>
+                  </tr>
+                  <tr>
+                        <td>По гослинии (иностранный)</td>
+                        <td><h6><span class="badge bg-secondary">{{ num_basis_i }}</span></h6></td>
+                  </tr>
+                  <tr>
+                        <td>На контракте</td>
+                        <td><h6><span class="badge bg-secondary">{{ num_basis_k }}</span></h6></td>
+                  </tr>
+                  <tr class="table-active">
+                        <td><strong>Уровень образования</strong></td>
+                        <td></td>
+                  </tr>
+                  <tr>
+                        <td>На бакалавриате</td>
+                        <td><h6><span class="badge bg-secondary">{{ num_level_bak }}</span></h6></td>
+
+                  </tr>
+                  <tr>
+                        <td>На магистратуре</td>
+                        <td><h6><span class="badge bg-secondary">{{ num_level_mag }}</span></h6></td>
+                  </tr>
+                  <tr class="table-active">
+                        <td><strong>Гражданство</strong></td>
+                        <td></td>
+                  </tr>
+                  <tr>
+                        <td>Граждане РФ</td>
+                        <td><h6><span class="badge bg-secondary">{{ citizenship_ru }}</span></h6></td>
+
+                  </tr>
+                  <tr>
+                        <td>Иностранцы</td>
+                        <td><h6><span class="badge bg-secondary">{{ citizenship_i }}</span></h6></td>
+                  </tr>
+                  <tr class="table-active">
+                        <td><strong>Текущий статус</strong></td>
+                        <td></td>
+                  </tr>
+                  <tr>
+                        <td>Являются студентами</td>
+                        <td><h6><span class="badge bg-secondary">{{ status_s }}</span></h6></td>
+                  </tr>
+                  <tr>
+                        <td>В академическом отпуске</td>
+                        <td><h6><span class="badge bg-secondary">{{ status_ao }}</span></h6></td>
+                  </tr>
+                  <tr>
+                        <td>Отчислены</td>
+                        <td><h6><span class="badge bg-secondary">{{ status_ot }}</span></h6></td>
+                  </tr>
+            </tbody>
+      </table>
+      </div>
+</div>
+{% include 'student/student_list.html' %}
 {% endblock %}
 

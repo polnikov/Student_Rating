@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block title %} Добавить обучающегося {% endblock %}
+
+{% block content %}
+
+<div class="addstudent_title">
+    <h2><span class="badge bg-secondary">Форма добавления обучающегося</span></h2>
+</div>
+
+<div class="alert-danger">
+    {# {{ form.errors }} #}
+    {% for error in form.errors %}
+        {{error}}
+    {% endfor %}
+
+
+</div>
+
+<div class="addstudent_body">
+    <form action="{% url 'add_student' %}" method="post">{% csrf_token %}
+            
+        {{ form.last_name }}<br>
+        {{ form.first_name }}<br>
+        {{ form.second_name }}<br>
+
+        {{ form.student_id }}<br>
+
+        <label>Гражданство</label>
+        {{ form.citizenship }}
+        
+        <label>Основа обучения</label>
+        {{ form.basis }}
+        
+        <label>Уровень образования</label>
+        {{ form.level }}
+
+        <label>Группа</label>
+        {{ form.group }}
+
+        <label>Дата зачисления</label>
+        {{ form.start_date }}
+        
+        <label>Текущий статус</label>
+        {{ form.status }}<br>
+
+        {{ form.comment }}<br>
+
+        <button type="submit" class="btn btn-secondary btn-lg">Добавить</button>
+
+    </form>
+</div>
+
+{% endblock %}

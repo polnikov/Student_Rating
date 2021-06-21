@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from ntpath import join
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,17 +36,20 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sessions',
     'django.contrib.staticfiles',
-]
-
-INSTALLED_APPS += [
+    
+    # user apps
+    'main.apps.MainConfig',
+    'student.apps.StudentConfig',
+    'subject.apps.SubjectConfig',
+    
+    # add apps
     'bootstrap4',
     'crispy_forms',
-    'student.apps.StudentConfig',
-    'main.apps.MainConfig',
-    'import_export'
+    'import_export',
+    'django_extensions',
 ]
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
@@ -66,7 +71,7 @@ ROOT_URLCONF = 'Student_Rating.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [os.path.join(BASE_DIR / 'templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -132,9 +137,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+# ]
+SATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
