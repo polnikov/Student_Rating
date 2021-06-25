@@ -24,7 +24,7 @@ urlpatterns = [
 
 urlpatterns += [
     path('', include('main.urls')),
-    path('students/', include('student.urls')),
+    path('students/', include('student.urls', namespace='students')),
     path('subjects/', include('subject.urls')),
 # TODO:     path('statistics/', include('statistics.urls')),
 # TODO:     path('money/', include('money.urls')),

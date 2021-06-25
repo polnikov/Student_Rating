@@ -2,64 +2,84 @@
 
 {% extends "base.html" %}
 
-{% block title %}{{ student.fullname }}{% endblock %}
+{% block title %}
+	{{ student.fullname }}
+{% endblock %}
 
 {% block content %}
-<div class="student_detail_title">
-    <h3><span class="badge bg-secondary">{{ student.last_name }} {{ student.first_name }} {{ student.second_name }}</span></h3>
-</div> -->
-<div class="student_detail_list">
-    <!-- <div class="row col-md-4"> -->
-        <table class="table table-hover">
-            <tbody>
-                <tr>
-                    <td>Зачетная книжка</td>
-                    <td><font color="blue">{{ student.student_id }}</font></td>
-                </tr>
-                <tr>
-                    <td>Гражданство</td>
-                    <td><font color="blue">{{ student.get_citizenship_display }}</font></td>
-                </tr>
-                <tr>
-                    <td>Основа обучения</td>
-                    <td><font color="blue">{{ student.get_basis_display }}</font></td>
-                </tr>
-                <tr>
-                    <td>Уровень обучения</td>
-                    <td><font color="blue">{{ student.get_level_display }}</font></td>
-                </tr>
-                <tr>
-                    <td>Группа</td>
-                    <td><font color="blue">{{ student.group }}</font></td>
-                </tr>
-                <tr>
-                    <td>Курс</td>
-                    <td><font color="blue">{{ student.course }}</font></td>
-                </tr>
-                <tr>
-                    <td>Дата зачисления</td>
-                    <td><font color="blue">{{ student.start_date }}</font></td>
-                </tr>
-                <tr>
-                    <td>Текущий статус</td>
-                    <td><font color="blue">{{ student.get_status_display }}</font></td>
-                </tr>
-                <tr>
-                    <td>Примечание</td>
-                    <td><font color="blue">{{ student.comment }}</font></td>
-                </tr>
-            </tbody>
-        <!-- </div> -->
-    </table>
-
-
-
-
-
-
-
-
-
-
-</div>
+	<div class="student_detail_title">
+		<h3>
+			<span class="badge bg-secondary">{{ student.last_name }}
+				{{ student.first_name }}
+				{{ student.second_name }}</span>
+		</h3>
+	</div>
+	<div
+		class="student_detail_list">
+		<!-- <div class="row col-md-4"> -->
+		<table class="table table-hover">
+			<tbody>
+				<tr>
+					<td>Зачетная книжка</td>
+					<td>
+						<font color="blue">{{ student.student_id }}</font>
+					</td>
+				</tr>
+				<tr>
+					<td>Гражданство</td>
+					<td>
+						<font color="blue">{{ student.get_citizenship_display }}</font>
+					</td>
+				</tr>
+				<tr>
+					<td>Основа обучения</td>
+					<td>
+						<font color="blue">{{ student.get_basis_display }}</font>
+					</td>
+				</tr>
+				<tr>
+					<td>Уровень обучения</td>
+					<td>
+						<font color="blue">{{ student.get_level_display }}</font>
+					</td>
+				</tr>
+				<tr>
+					<td>Группа</td>
+					<td>
+						<font color="blue">{{ student.group }}</font>
+					</td>
+				</tr>
+				<tr>
+					<td>Период</td>
+					<td>
+						<font color="blue">{{ student.period }}</font>
+					</td>
+				</tr>
+				<tr>
+					<td>Дата зачисления</td>
+					<td>
+						<font color="blue">{{ student.start_date }}</font>
+					</td>
+				</tr>
+				<tr>
+					<td>Текущий статус</td>
+					<td>
+						<font color="blue">{{ student.get_status_display }}</font>
+					</td>
+				</tr>
+				<tr>
+					<td>Примечание</td>
+					<td>
+						<font color="blue">{{ student.comment }}</font>
+					</td>
+				</tr>
+			</tbody>
+			<!-- </div> -->
+		</table>
+	</div>
+	<div class="addstudent_button">
+		<a href="{% url 'students:update_student' student.student_id %}">
+			<button type="button" class="btn btn-success">Обновить данные</button>
+		</a>
+	</div>
 {% endblock %}

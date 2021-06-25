@@ -3,18 +3,18 @@
 {% extends "base.html" %}
 
 {% block title %}
-	Добавить обучающегося
+	Обновить обучающегося
 {% endblock %}
 
 {% block content %}
 	<div class="addstudent_title">
 		<h2>
-			<span class="badge bg-secondary">Форма добавления обучающегося</span>
+			<span class="badge bg-secondary">Форма обновления обучающегося</span>
 		</h2>
 	</div>
 
 	<div class="addstudent_body">
-		<form action="{% url 'add_student' %}" method="post">{% csrf_token %}
+		<form action="" method="post">{% csrf_token %}
 			{{ form.last_name }}<br>
 			{{ form.first_name }}<br>
 			{{ form.second_name }}<br>
@@ -42,7 +42,7 @@
 
 			{{ form.comment }}<br>
 
-			<button type="submit" class="btn btn-secondary btn-lg">Добавить</button>
+			<button type="submit" class="btn btn-secondary btn-lg">Обновить</button>
 		</form>
 	</div>
 {% endblock %}

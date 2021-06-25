@@ -5,14 +5,12 @@ from .forms import SubjectForm
 from django.views import generic
 
 
-
 def subjects(request):
     """
     Функция отображения на сайте суммарной информации о дисциплинах.
     """
     subjects_list = Subject.objects.all()
     num_subjects = Subject.objects.all().count()
-    
     # Отрисовка HTML-шаблона Subjects.html с данными внутри
     # переменной контекста context
     return render(
@@ -23,6 +21,7 @@ def subjects(request):
             'num_subjects':num_subjects,
             },
     )
+
 
 class SubjectDetailView(generic.DetailView):
     model = Subject
@@ -37,7 +36,6 @@ def add_subject(request):
             return redirect('subjects')
         else:
             error_message
-    
     form = SubjectForm()
     
     data = {

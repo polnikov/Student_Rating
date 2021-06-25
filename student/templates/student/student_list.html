@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 
 <div class="addstudent_button">
-      <a href="{% url 'add_student' %}"><button type="button" class="btn btn-success">Добавить студента</button></a>
+	<a href="{% url 'students:add_student' %}">
+		<button type="button" class="btn btn-success">Добавить студента</button>
+	</a>
 </div>
 <div class="student_list_title">
-      <h4><span class="badge bg-secondary">Общий список обучающихся</span></h4>
+	<h4>
+		<span class="badge bg-secondary">Общий список обучающихся</span>
+	</h4>
 </div>
 <div class="student_list">
-
-<table class="table table-hover">
-      <thead>
-            <tr class="table-secondary">
-                  <th scope="col">Курс</th>
-                  <th scope="col">Группа</th>
-                  <th scope="col">Обучающийся</th>
-                  <th scope="col">Статус</th>
-                  <th scope="col">Примечание</th>
-            </tr>
-      </thead>
-      <tbody>
-            {% if students_list %}
-                  {% for student in students_list %}
-                        <tr>
-                              <td>{{ student.course }}</td>
-                              <td>{{ student.get_group_display }}</td>
-                              <td><a href="{{ student.get_absolute_url }}" class="text-decoration-none">{{ student.last_name }} {{ student.first_name }} {{ student.second_name }}</a></td>
-                              <td>{{ student.get_status_display }}</td>
-                              <td>{{ student.comment }}</td>
-                        </tr>
-                  {% endfor %}
-            {% else %}
-                  <p>Записи об обучающихся отсутствуют.</p>
-            {% endif %}
-      </tbody>
-</table>
+	<table class="table table-hover">
+		<thead>
+			<tr class="table-secondary">
+				<th scope="col">Период</th>
+				<th scope="col">Группа</th>
+				<th scope="col">Обучающийся</th>
+				<th scope="col">Статус</th>
+				<th scope="col">Примечание</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% if students_list %}
+				{% for student in students_list %}
+					<tr>
+						<td>{{ student.period }}</td>
+						<td>{{ student.get_group_display }}</td>
+						<td>
+							<a href="{{ student.get_absolute_url }}" class="text-decoration-none">{{ student.last_name }}
+								{{ student.first_name }}
+								{{ student.second_name }}</a>
+						</td>
+						<td>{{ student.get_status_display }}</td>
+						<td>{{ student.comment }}</td>
+					</tr>
+				{% endfor %}
+			{% else %}
+				<p>Записи об обучающихся отсутствуют.</p>
+			{% endif %}
+		</tbody>
+	</table>
 </div>
