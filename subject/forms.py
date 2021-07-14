@@ -1,8 +1,9 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.forms.widgets import Select, TextInput
-from .models import Subject
 from django.forms import ModelForm
+from django.forms.widgets import DateInput, Select, TextInput
+
+from .models import Subject
 
 
 class MyDateInput(forms.DateInput):
@@ -17,6 +18,7 @@ class SubjectForm(ModelForm):
             'subject_name',
             'cathedra',
             'teacher',
+            'form_control',
             'att_date',
             'comment',
         ]
@@ -32,9 +34,12 @@ class SubjectForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Фамилия И.О. преподавателя',
             }),
-            'att_date': MyDateInput(attrs={
+            'form_control': Select(attrs={
                 'class': 'form-control',
             }),
+            'att_date': DateInput(attrs={
+                'class': 'form-control',
+            }, format='%d.%m.%Y',),
 
             'comment': TextInput(attrs={
                 'class': 'form-control',

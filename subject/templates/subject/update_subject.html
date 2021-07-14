@@ -3,20 +3,20 @@
 {% extends "base.html" %}
 
 {% block title %}
-	Добавить дисциплину
+	Обновить дисциплину
 {% endblock %}
 
 {% block content %}
 	<div class="subject_title">
 		<h2>
-			Форма добавления дисциплин
+			Форма обновления дисциплины
 		</h2>
-		<form action="{% url 'subjects:add_subject' %}" method="post">{% csrf_token %}
-			{{ form.subject_name }}
+		<form action="" method="post">{% csrf_token %}
+			{{ form.subject_name }}<br>
 
 			<label>Форма контроля</label>
 			{{ form.form_control }}<br>
-
+			
 			{{ form.teacher }}
 
 			<label>Кафедра</label>
@@ -31,7 +31,13 @@
 			{{ form.att_date }}<br>
 
 			{{ form.comment }}<br>
-			<button type="submit" class="btn btn-success btn-lg">Добавить</button>
-		</form>
+			
+			<a href="{% url 'subjects:update_subject' subject.id %}">
+				<button type="submit" class="btn btn-secondary btn-lg">Назад</button>
+			</a>
+			<a href="{% url 'subjects:subjects' %}">
+				<button type="submit" class="btn btn-success btn-lg">Обновить</button>
+			</a>
+			</form>
 	</div>
 {% endblock %}

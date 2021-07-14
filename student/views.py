@@ -1,18 +1,19 @@
-from django.shortcuts import redirect, render
-from django.views.generic.base import View
-from .models import Student
 from django.http import Http404
+from django.shortcuts import redirect, render
 from django.utils.translation import gettext as _
-from .forms import StudentForm
 from django.views import generic
 from django.views.generic import UpdateView
+from django.views.generic.base import View
+
+from .forms import StudentForm
+from .models import Student
 
 
 def students(request):
     """
     Функция отображения на сайте суммарной информации о студентах.
     """
-    students_list = Student.objects.all()
+    students_list = Student.extended.all().order_by('semester', 'group')
     num_records = Student.objects.all().count()
     num_basis_b = Student.objects.filter(basis__exact='Б').count()
     num_basis_k = Student.objects.filter(basis__exact='К').count()
@@ -49,6 +50,8 @@ def students(request):
 
 class StudentDetailView(generic.DetailView):
     model = Student
+    queryset = Student.extended.all()
+
     def get_object(self, queryset=None):
 
         if queryset is None:
@@ -123,32 +126,25 @@ class StudentUpdateView(generic.UpdateView):
         return obj
 
 
-# class StudetnUpdate(View):
-#     def get(self, request, student_id):
-#         student = Student.objects.get(student_id__iexact=student_id)
-#         bound_form = StudentForm(instance=student)
-#         return render(request, 'student/update_student.html', context={'form': bound_form, 'student': student})
-    
-# def add_student(request):
-#     bound_form = StudentForm(request.POST)
-#     if request.method == 'POST':
-#         if bound_form.is_valid():
-#             new_student = bound_form.save()
-#             return redirect('students')
-#         else:
-#             'Error'
-#     new_student = StudentForm()
-#     data = {
-#         'form': bound_form,
-#     }
-#     return render(request, 'student/add_student.html', data)
-
 def add_student(request):
     if request.method == 'POST':
         form = StudentForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('students')
+            return redirect('students:add_student')
     else:
         form = StudentForm()
     return render(request, 'student/add_student.html', {'form': form})
+
+
+# def update_student(request, pk):
+#     student = Student.objects.get(student_id=pk)
+#     form = StudentForm(instance=student)
+#     if request.method == 'POST':
+#         form = StudentForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('students:add_student')
+    
+#     context = {'form':form}
+#     return render(request, 'student/update_student.html', context)

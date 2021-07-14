@@ -5,17 +5,20 @@
 		<button type="button" class="btn btn-success">Добавить студента</button>
 	</a>
 </div>
-<div class="student_list_title">
+
+<div class="title">
 	<h4>
 		<span class="badge bg-secondary">Общий список обучающихся</span>
 	</h4>
 </div>
+
 <div class="student_list">
+
 	<table class="table table-hover">
 		<thead>
 			<tr class="table-secondary">
-				<th scope="col">Период</th>
 				<th scope="col">Группа</th>
+				<th scope="col">Семестр</th>
 				<th scope="col">Обучающийся</th>
 				<th scope="col">Статус</th>
 				<th scope="col">Примечание</th>
@@ -25,8 +28,8 @@
 			{% if students_list %}
 				{% for student in students_list %}
 					<tr>
-						<td>{{ student.period }}</td>
-						<td>{{ student.get_group_display }}</td>
+						<td>{{ student.group }}</td>
+						<td>{{ student.semester }}</td>
 						<td>
 							<a href="{{ student.get_absolute_url }}" class="text-decoration-none">{{ student.last_name }}
 								{{ student.first_name }}
@@ -42,3 +45,4 @@
 		</tbody>
 	</table>
 </div>
+

@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 
 <div class="addsubject_button">
-            <a href="{% url 'add_subject' %}"><button type="button" class="btn btn-success">Добавить дисциплину</button></a>
+	<a href="{% url 'subjects:add_subject' %}">
+		<button type="button" class="btn btn-success">Добавить дисциплину</button>
+	</a>
 </div>
 
-<div class="subject_list_title">
-      <h4><span class="badge bg-secondary">Список дисциплин</span></h4>
+<div class="title">
+	<h4>
+		<span class="badge bg-secondary">Список дисциплин</span>
+	</h4>
 </div>
 
 <div class="subject_list">
 
-<table class="table table-hover">
-      <thead>
-            <tr class="table-secondary">
-                  <th scope="col">Дисциплина</th>
-                  <th scope="col">Кафедра</th>
-                  <th scope="col">Преподаватель</th>
-                  <th scope="col">Дата аттестации</th>
-            </tr>
-      </thead>
-      <tbody>
-            {% if subjects_list %}
-                  {% for subject in subjects_list %}
-                        <tr>
-                              <td><a href="{{ subject.get_absolute_url }}" class="text-decoration-none">{{ subject.subject_name }}</a></td>
-                              <td>{{ subject.get_cathedra_display }}</td>
-                              <td>{{ subject.empty_teacher }}</td>
-                              <td>{{ subject.att_date | date:"l" }} {{ subject.empty_att_date }}</td>
-                        </tr>
-                  {% endfor %}
-            {% else %}
-                  <p>Записи о дисциплинах отсутствуют.</p>
-            {% endif %}
-      </tbody>
-</table>
+	<table class="table table-hover">
+		<thead>
+			<tr class="table-secondary">
+				<th scope="col">Дисциплина</th>
+				<th scope="col">Преподаватель</th>
+				<th scope="col">Дата аттестации</th>
+				<th scope="col">Кафедра</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% if subjects_list %}
+				{% for subject in subjects_list %}
+					<tr>
+						<td>
+							<a href="{{ subject.get_absolute_url }}" class="text-decoration-none">{{ subject.subject_name }}</a>
+						</td>
+						<td>
+							{{ subject.empty_teacher }}
+						</td>
+						<td>
+							{{ subject.att_date | date:"l" }}, 
+							{{ subject.empty_att_date }}
+						</td>
+						<td>
+							{{ subject.get_cathedra_display }}
+						</td>
+					</tr>
+				{% endfor %}
+			{% else %}
+				<p>Записи о дисциплинах отсутствуют.</p>
+			{% endif %}
+		</tbody>
+	</table>
 </div>

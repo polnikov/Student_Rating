@@ -1,6 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.forms.widgets import Select, TextInput
+from django.forms.widgets import DateInput, NumberInput, Select, TextInput
+
 from .models import Student
 
 
@@ -67,10 +68,10 @@ class StudentForm(forms.ModelForm):
                 attrs={
                     'class': 'form-control',
                 }),
-            'start_date': MyDateInput(
+            'start_date': DateInput(
                 attrs={
                     'class': 'form-control',
-                }),
+                }, format='%d.%m.%Y',),
             'status': Select(
                 attrs={
                     'class': 'form-control',
@@ -84,10 +85,10 @@ class StudentForm(forms.ModelForm):
 
     def clean_student_id(self):
         student_id = self.cleaned_data['student_id']
-        if isinstance(student_id, int) is not True:
+        if isinstance(student_id, str) is True:
             raise ValidationError('Номер зачетки введен некорректно')
-        if Student.objects.filter(student_id__iexact=student_id):
-            raise ValidationError(f'Номер {student_id} уже существует')
+        # if Student.objects.filter(student_id__iexact=student_id):
+        #     raise ValidationError(f'Номер {student_id} уже существует')
         return student_id
 
 

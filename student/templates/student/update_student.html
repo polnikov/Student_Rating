@@ -7,20 +7,21 @@
 {% endblock %}
 
 {% block content %}
-	<div class="addstudent_title">
+	<div class="student_title">
 		<h2>
-			<span class="badge bg-secondary">Форма обновления обучающегося</span>
+			Форма обновления обучающегося
 		</h2>
-	</div>
-
-	<div class="addstudent_body">
 		<form action="" method="post">{% csrf_token %}
 			{{ form.last_name }}<br>
 			{{ form.first_name }}<br>
 			{{ form.second_name }}<br>
 
-			{{ form.student_id }}<br>
-			<div class="alert-danger">{{ form.student_id_errors }}</div>
+			{% for error in form.student_id.errors %} 
+			<div class="alert-danger">
+				<strong>{{ error|escape }}</strong>
+			</div>
+			{% endfor %}
+			{{ form.student_id }}
 
 			<label>Гражданство</label>
 			{{ form.citizenship }}
@@ -34,7 +35,12 @@
 			<label>Группа</label>
 			{{ form.group }}
 
-			<label>Дата зачисления</label>
+			{% for error in form.start_date.errors %} 
+			<div class="alert-danger">
+				<strong>{{ error|escape }}</strong>
+			</div>
+			{% endfor %}
+			<label>Дата зачисления [дд.мм.гггг]</label>
 			{{ form.start_date }}
 
 			<label>Текущий статус</label>
@@ -42,7 +48,12 @@
 
 			{{ form.comment }}<br>
 
-			<button type="submit" class="btn btn-secondary btn-lg">Обновить</button>
+			<a href="{% url 'students:update_student' student.student_id %}">
+				<button type="submit" class="btn btn-secondary btn-lg">Назад</button>
+			</a>
+			<a href="{% url 'students:students' %}">
+				<button type="submit" class="btn btn-success btn-lg">Обновить</button>
+			</a>
 		</form>
 	</div>
 {% endblock %}

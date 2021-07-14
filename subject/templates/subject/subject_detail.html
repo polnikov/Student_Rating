@@ -9,26 +9,34 @@
 {% block content %}
 	<div class="subject_detail_title">
 		<h3>
-			<span class="badge bg-secondary">{{ subject.subject_name }}</span>
+			<span class="badge bg-secondary">
+				{{ subject.subject_name }}
+			</span>
 		</h3>
 	</div>
 	<div class="subject_detail_list">
-		<div class="row col-md-6">
+		<div class="row col-md-8">
 			<table class="table table-hover">
 				<tbody>
+					<tr>
+						<td style="width: 200px">Форма контроля</td>
+						<td>
+							<font color="blue">{{ subject.get_form_control_display }}</font>
+						</td>
+					</tr>
+					<tr>
+						<td>Факультет</td>
+						<td>
+							<font color="red">вытащить название факультета</font>
+						</td>
+					</tr>
+					<tr>
 					<tr>
 						<td>Кафедра</td>
 						<td>
 							<font color="blue">{{ subject.get_cathedra_display }}</font>
 						</td>
 					</tr>
-					<tr>
-						<td>Факультет</td>
-						<td>
-							<font color="blue">как вытащить название факультета?</font>
-						</td>
-					</tr>
-					<tr>
 						<td>Преподаватель</td>
 						<td>
 							<font color="blue">{{ subject.empty_teacher }}</font>
@@ -37,12 +45,27 @@
 					<tr>
 						<td>Дата аттестации</td>
 						<td>
-							<font color="blue">{{ subject.att_date | date:"l" }}
-								{{ subject.empty_att_date }}</font>
+							<font color="blue">
+								{{ subject.att_date | date:"l" }}, {{ subject.empty_att_date }}
+							</font>
+						</td>
+					</tr>
+					<tr>
+						<td>Примечание</td>
+						<td>
+							<font color="blue">{{ subject.comment }}</font>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+	</div>
+	<div class="addsubject_button">
+		<a href="{% url 'subjects:subjects' %}">
+			<button type="button" class="btn btn-secondary">Назад</button>
+		</a>
+		<a href="{% url 'subjects:update_subject' subject.id %}">
+			<button type="button" class="btn btn-success">Обновить</button>
+		</a>
 	</div>
 {% endblock %}
